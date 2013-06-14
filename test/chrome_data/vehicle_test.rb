@@ -35,6 +35,29 @@ describe ChromeData::Vehicle do
       @vehicle.model.must_equal 'C-Class'
     end
 
+    describe 'standard' do
+      before do
+        @standard = @vehicle.standard[0]
+      end
+
+      it "sets id" do
+        @standard.fetch("id").must_equal 1236
+      end
+
+      it "sets description" do
+        @standard.fetch("description").
+          must_equal "1.8L 16-valve I4 turbocharged engine"
+      end
+
+      it "sets category" do
+        @standard.fetch("category").must_equal "MECHANICAL"
+      end
+
+      it "sets style_ids" do
+        @standard.fetch("style_ids").must_equal [337364, 337365]
+      end
+    end
+
     describe 'styles' do
       it 'sets id' do
         @vehicle.styles[0].id.must_equal 337364
